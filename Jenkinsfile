@@ -28,13 +28,13 @@ pipeline {
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                        bat "winscp -i ~./.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat8/webapps"
+                        bat "winscp -i ~./.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        bat "winscp -i ~/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat8/webapps"
+                        bat "winscp -i ~/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat/webapps"
                     }
                 }
             }
