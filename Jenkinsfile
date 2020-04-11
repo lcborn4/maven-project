@@ -29,6 +29,8 @@ pipeline {
                 stage ('Deploy to Staging'){
                     steps {
                         bat 'echo The current directory is %CD%'
+                        bat 'more ~/.ssh/tomcat-demo.pem'
+                        bat 'more /webapp/target/*.war'
                         bat "pscp -scp -i ~/.ssh/tomcat-demo.pem /webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                     }
                 }
