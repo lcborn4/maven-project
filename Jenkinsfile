@@ -29,7 +29,7 @@ pipeline {
                 stage ('Deploy to Staging'){
                     steps {
                         bat 'echo The current directory is %CD%'
-                        bat 'more ..\..\keys\tomcat-demo.ppk'
+                        bat 'more ..\\..\\keys\\tomcat-demo.ppk'
                         bat "pscp -scp -i ../../keys/tomcat-demo.ppk webapp/target/webapp.war ec2-user@${params.tomcat_dev}.compute-1.amazonaws.com:~/var/lib/tomcat/webapps"
                     }
                 }
