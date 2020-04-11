@@ -29,13 +29,13 @@ pipeline {
                 stage ('Deploy to Staging'){
                     steps {
                         bat 'echo The current directory is %CD%'
-                        bat "pscp -scp -i ../../keys/tomcat-demo.pem webapp/target/webapp.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
+                        bat "pscp -scp -i keys/tomcat-demo.ppk webapp/target/webapp.war ec2-user@${params.tomcat_dev}.compute-1.amazonaws.com:~/var/lib/tomcat/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        bat "pscp -scp -i ../../keys/tomcat-demo.pem webapp/target/webapp.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat/webapps"
+                        bat "winscp -i keys/tomcat-demo.ppk webapp/target/webapp.war ec2-user@${params.tomcat_prod}.compute-1.amazonaws.com:~/var/lib/tomcat/webapps"
                     }
                 }
             }

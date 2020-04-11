@@ -1,0 +1,14 @@
+C:\Program Files (x86)\Jenkins\workspace\FullyAutomated\webapp\target/webapp.war
+
+pscp -scp -i ~/.ssh/tomcat-demo.pem C:\Program Files (x86)\Jenkins\workspace\FullyAutomated\webapp\target\webapp.war ec2-user@3-86-144-115:/var/lib/tomcat/webapps
+
+
+winscp -i C:\Program Files (x86)\Jenkins\keys\tomcat-demo.pem webapp/target/webapp.war ec2-user@3.86.144.115:/var/lib/tomcat/webapps 
+
+
+winscp.com /command "open sftp://user:password@example.com/" "put examplefile.txt /home/user/" "exit"
+
+winscp.com scp://3.86.144.115 /publickey=C:\Program Files (x86)\Jenkins\keys\tomcat-demo.pem /script=C:\Users\lcbor\maven-project\script.txt
+
+
+pscp -scp  -i tomcat-demo.ppk message.txt ec2-user@ec2-3-86-144-115.compute-1.amazonaws.com:~/test
