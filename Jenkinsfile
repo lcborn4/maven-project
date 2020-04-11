@@ -6,7 +6,7 @@ pipeline {
     }
     parameters {
         string(name: 'tomcat_dev', defaultValue: '54.152.27.253', description: 'Staging Server')
-        string(name: 'tomcat_prod', defaultValue: '3.86.144.115', description: 'Production Server')
+        string(name: 'tomcat_prod', defaultValue: '3.80.180.245', description: 'Production Server')
     }
     triggers {
         pollSCM('* * * * *')
@@ -29,14 +29,13 @@ pipeline {
                 stage ('Deploy to Staging'){
                     steps {
                         bat 'echo The current directory is %CD%'
-                        bat 'more ..\\..\\keys\\tomcat-demo.ppk'
-                        bat "pscp -scp -i ..\\..\\keys\\tomcat-demo.ppk webapp\\target\\webapp.war ec2-user@${params.tomcat_dev}.compute-1.amazonaws.com:~/var/lib/tomcat/webapps"
+                        bat "pscp -scp -i ..\\..\\keys\\tomcat-demo.ppk webapp\\target\\webapp.war ec2-user@${params.tomcat_dev}:~/var/lib/tomcat/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                        bat "winscp -i ..\\..\\keys\\tomcat-demo.ppk webapp\\target\\webapp.war ec2-user@${params.tomcat_prod}.compute-1.amazonaws.com:~/var/lib/tomcat/webapps"
+                        bat "winscp -i ..\\..\\keys\\tomcat-demo.ppk webapp\\target\\webapp.war ec2-user@${params.tomcat_prod}:~/var/lib/tomcat/webapps"
                     }
                 }
             }
