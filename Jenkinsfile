@@ -28,6 +28,7 @@ pipeline {
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
+                        bat 'echo The current directory is %CD%'
                         bat "winscp -i ~/.ssh/tomcat-demo.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat/webapps"
                     }
                 }
