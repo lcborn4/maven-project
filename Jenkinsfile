@@ -35,7 +35,7 @@ pipeline {
 
                 stage ("Deploy to Production"){
                     steps {
-                        bat "winscp -i ..\\..\\keys\\tomcat-demo.ppk webapp\\target\\webapp.war ec2-user@${params.tomcat_prod}:~/apache-tomcat-8.5.54/webapps"
+                        bat "pscp -scp -i ..\\..\\keys\\tomcat-demo.ppk webapp\\target\\webapp.war ec2-user@${params.tomcat_prod}:~/apache-tomcat-8.5.54/webapps"
                     }
                 }
             }
