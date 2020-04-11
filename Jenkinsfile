@@ -5,8 +5,8 @@ pipeline {
         jdk 'localJDK'	        
     }
     parameters {
-        string(name: 'tomcat_dev', defaultValue: '54-152-27-253', description: 'Staging Server')
-        string(name: 'tomcat_prod', defaultValue: '3-86-144-115', description: 'Production Server')
+        string(name: 'tomcat_dev', defaultValue: '54.152.27.253', description: 'Staging Server')
+        string(name: 'tomcat_prod', defaultValue: '3.86.144.115', description: 'Production Server')
     }
     triggers {
         pollSCM('* * * * *')
