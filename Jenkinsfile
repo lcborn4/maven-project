@@ -31,7 +31,8 @@ pipeline {
                         bat 'echo The current directory is %CD%'
                         bat 'echo %PATH%'
                         bat 'java -version'
-                        bat "pscp -scp -i ..\\..\\keys\\tomcat-demo.ppk webapp\\target\\webapp.war ec2-user@${params.tomcat_dev}:~/apache-tomcat-8.5.53/webapps"
+                        bat "winscp -i ~./.ssh/tomcat-demo.pem webapp\\target\\webapp.war ec2-user@${params.tomcat_dev}:~/apache-tomcat-8.5.53/webapps"
+                        // bat "pscp -scp -i ..\\..\\keys\\tomcat-demo.ppk webapp\\target\\webapp.war ec2-user@${params.tomcat_dev}:~/apache-tomcat-8.5.53/webapps"
                     }
                 }
 
